@@ -1,0 +1,20 @@
+L = 15; % Newtons
+%Definimos los diferentes angulos, EN RADIANES
+theta1 = 2.92 * pi / 180;
+theta2 = 33.8 * pi / 180;
+theta3 = 47.9 * pi / 180;
+theta4 = 78.8 * pi / 180;
+% Ahora definimos los Coeficientes de las ecuaciones
+coefficients = [-cos(theta1), -sin(theta2);
+    -sin(theta1), cos(theta2);
+];
+constants = [
+    0.601 * L * sin(theta3) - 1.02 * L * cos(theta4);
+    0.601 * L * cos(theta3) + 1.02 * L * sin(theta4);
+];
+% Resolución del sistema usando eliminación gaussiana
+solutions = linsolve(coefficients, constants);
+A_value = solutions(1);
+B_value = solutions(2);
+disp(['Fuerza A: ', num2str(A_value), ' N']);
+disp(['Fuerza B: ', num2str(B_value), ' N']);
